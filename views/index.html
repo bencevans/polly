@@ -1,0 +1,16 @@
+
+<div class="ycontainer">
+<a class="button button-facebook" href="/auth/facebook">Login with Facebook</a>
+<a class="button button-twitter" href="/auth/twitter">Login with Twitter</a>
+</div>
+
+<script type="text/javascript">
+  var y = document.querySelector('.ycontainer');
+
+  function positionY() {
+    y.style.marginTop = (window.innerHeight - y.offsetHeight) / 3 + 'px';
+  }
+
+  window.addEventListener('load', positionY, false)
+  window.onresize = positionY;
+</script>

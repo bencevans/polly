@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var db = require('../db');
+
+
+var syncOptions = {
+  force: (process.env.FORCE) ? true : false
+};
+
+db.sequelize.sync(syncOptions).error(function(error){
+  console.error(error);
+}).success(function() {
+  console.log('Setup Complete');
+});

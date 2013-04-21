@@ -1,0 +1,4 @@
+config.js
+db.sqlite
+node_modules
+public/css/unique.css

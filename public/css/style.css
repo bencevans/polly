@@ -1,0 +1,30 @@
+body {
+  font-family: Verdana;
+  background-size: cover;
+  margin: 0;
+}
+
+.button {
+  padding: 10px;
+  display: block;
+  text-align: center;
+  color: #fff;
+  margin: 10px auto;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button-facebook {
+  background-color: #3b5998;
+  font-size: 40px;
+  width: 400px;
+}
+
+.button-twitter {
+  background-color: #4099FF;
+  font-size: 30px;
+  width: 300px;
+}
