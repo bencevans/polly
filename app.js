@@ -67,6 +67,17 @@ var routes = requireDir(__dirname + '/routes');
 
 app.get('/', routes.index);
 
+app.get('/admin/poll', routes.admin.poll.list);
+app.get('/admin/poll/new', routes.admin.poll.form);
+app.get('/admin/poll/:id', routes.admin.poll.form);
+app.post('/admin/poll/new', routes.admin.poll.formAction);
+app.post('/admin/poll/:id', routes.admin.poll.formAction);
+app.get('/admin/poll/:id/destroy', routes.admin.poll.destroy);
+
+app.get('/user.json', function(req, res, next) {
+  res.send(req.user);
+});
+
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
