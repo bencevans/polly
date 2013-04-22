@@ -66,7 +66,7 @@ passport.deserializeUser(function(id, done) {
 var routes = requireDir(__dirname + '/routes');
 
 app.get('/', routes.index);
-
+app.get('/poll/:id', routes.poll);
 app.get('/admin/poll', routes.admin.poll.list);
 app.get('/admin/poll/new', routes.admin.poll.form);
 app.get('/admin/poll/:id', routes.admin.poll.form);

@@ -1,6 +1,7 @@
 body {
-  font-family: Verdana;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-size: cover;
+  padding: 50px;
   margin: 0;
 }
 
@@ -27,4 +28,11 @@ body {
   background-color: #4099FF;
   font-size: 30px;
   width: 300px;
+}
+
+.container {
+  width:100%;
+  max-width: 1080px;
+  min-width: 400px;
+  margin: auto;
 }
