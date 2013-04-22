@@ -14,7 +14,8 @@
     "passport-twitter": "~0.1.4",
     "passport-facebook": "~0.1.5",
     "express": "~3.2.0",
-    "hbs": "~2.1.0"
+    "hbs": "~2.1.0",
+    "underscore": "~1.4.4"
   },
   "devDependencies": {
     "supervisor": "~0.5.2"

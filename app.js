@@ -7,6 +7,7 @@ var express = require('express'),
     app = express(),
     passport = require('passport'),
     requireDir = require('require-dir'),
+    hbs = require('hbs'),
     db = require('./db');
 
 /**
@@ -17,6 +18,11 @@ for(var key in require('./config')) {
   if(key.match(/^LOCALS_/)) app.locals[key.match(/^LOCALS_(.+)/)[1]] = require('./config')[key];
 }
 
+var hbsHelpers = requireDir('./view_helpers');
+for(var key in hbsHelpers) {
+  hbs.registerHelper(key, hbsHelpers[key]);
+}
+
 app.configure('development', function() {
   app.use(express.logger('dev'));
 });
@@ -24,7 +30,7 @@ app.configure('development', function() {
 app.configure(function() {
   app.use(express.static('public'));
   app.set('views', __dirname + '/views');
-  app.engine('html', require('hbs').__express);
+  app.engine('html', hbs.__express);
   app.set('view engine', 'html');
   app.use(express.cookieParser());
   app.use(express.bodyParser());
@@ -65,14 +71,19 @@ passport.deserializeUser(function(id, done) {
 
 var routes = requireDir(__dirname + '/routes');
 
+function isAdmin(req, res, next) {
+  if(req.user && req.user.admin) return next();
+  res.status(404).render('error/404');
+}
+
 app.get('/', routes.index);
 app.get('/poll/:id', routes.poll);
-app.get('/admin/poll', routes.admin.poll.list);
-app.get('/admin/poll/new', routes.admin.poll.form);
-app.get('/admin/poll/:id', routes.admin.poll.form);
-app.post('/admin/poll/new', routes.admin.poll.formAction);
-app.post('/admin/poll/:id', routes.admin.poll.formAction);
-app.get('/admin/poll/:id/destroy', routes.admin.poll.destroy);
+app.get('/admin/poll', isAdmin, routes.admin.poll.list);
+app.get('/admin/poll/new', isAdmin, routes.admin.poll.form);
+app.get('/admin/poll/:id', isAdmin, routes.admin.poll.form);
+app.post('/admin/poll/new', isAdmin, routes.admin.poll.formAction);
+app.post('/admin/poll/:id', isAdmin, routes.admin.poll.formAction);
+app.get('/admin/poll/:id/destroy', isAdmin, routes.admin.poll.destroy);
 
 app.get('/user.json', function(req, res, next) {
   res.send(req.user);
@@ -101,6 +112,7 @@ app.get('/auth/twitter/callback',
   })
 );
 
+app.all('*', routes.error['404']);
 
 
 app.listen(3000);

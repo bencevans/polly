@@ -5,7 +5,7 @@ module.exports.poll = {};
 
 module.exports.poll.list = function(req, res, next) {
   db.Poll.findAll().success(function(polls) {
-    res.send(polls);
+    res.render('admin/poll/list', {polls:polls});
   });
 };
 

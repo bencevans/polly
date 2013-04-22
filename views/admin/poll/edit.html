@@ -1,8 +1,14 @@
 <form method="POST">
-  id <input name="id" type="number" value="{{id}}" readonly>
-  name <input name="name" type="text" value="{{name}}">
-  description <input name="description" type="text" value="{{description}}">
-  keywords <input name="keywords" type="text" value="{{keywords}}">
-  endDate <input name="endDate" type="date" value="{{endDate}}">
-  <input type="submit">
+  <fieldset>
+    <legend>{{#if id}}Edit Poll #{{id}}{{else}}New Poll{{/if}}</legend>
+    <label for="id">id</label> <input name="id" if="id" type="number" value="{{id}}" readonly>
+    <label for="name">name</label> <input name="name" if="name" type="text" value="{{name}}">
+    <label for="description">description</label> <input name="description" if="description" type="text" value="{{description}}">
+    <label for="keywords">keywords</label> <input name="keywords" if="keywords" type="text" value="{{keywords}}">
+    <label for="endDate">endDate</label> <input name="endDate" if="endDate" type="date" value="{{endDate}}">
+    <button type="submit" class="btn">Submit</button>
+    {{#if id}}
+    <a href="/admin/poll/{{id}}/destroy" class="btn btn-danger">Destroy</a>
+    {{/if}}
+  </fieldset>
 </form>

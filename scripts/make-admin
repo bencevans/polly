@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var db = require('../db');
+
+var syncOptions = {
+  force: (process.env.FORCE) ? true : false
+};
+
+function handleError(error) {
+  throw error;
+}
+
+db.User.find({
+  where: {
+    id: process.argv[2]
+  }
+}).success(function(user) {
+  if(!user) throw new Error('user not found');
+  user.updateAttributes({
+    admin: true
+  }).success(function() {
+    console.log('User is now admin');
+    process.exit(0);
+  }).error(handleError);
+}).error(handleError);

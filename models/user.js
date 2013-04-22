@@ -15,6 +15,10 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.STRING,
       allowNull: true,
       unique: true
+    },
+    admin: {
+      type: Sequelize.BOOLEAN,
+      default: false
     }
   });
 };
