@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+/**
+ * Dependencies
+ */
+
+var cluster = require("cluster");
+var os = require("os");
+var debug = require("debug")("cluster");
+
+
+/**
+ * Start 1 Worker per CPU
+ */
+
+var cpus = os.cpus().length;
+
+if(cluster.isMaster) {
+  debug('(master): Starting #{cpus} instance(s)');
+  for(var i = 1; i <= cpus; i++) {
+    cluster.fork();
+  }
+} else {
+  debug('(fork ' + cluster.worker.id + '): Started');
+  require('../app');
+}

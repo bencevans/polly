@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+./node_modules/supervisor/lib/cli-wrapper.js app

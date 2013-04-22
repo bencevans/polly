@@ -15,5 +15,8 @@
     "passport-facebook": "~0.1.5",
     "express": "~3.2.0",
     "hbs": "~2.1.0"
+  },
+  "devDependencies": {
+    "supervisor": "~0.5.2"
   }
 }
