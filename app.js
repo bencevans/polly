@@ -76,6 +76,11 @@ function isAdmin(req, res, next) {
   res.status(404).render('error/404');
 }
 
+app.get('*', function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 app.get('/', routes.index);
 app.get('/poll/:id', routes.poll);
 app.get('/admin/poll', isAdmin, routes.admin.poll.list);

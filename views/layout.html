@@ -3,12 +3,13 @@
 <head>
   <title>{{#if title}}{{title}} | {{/if}}{{SITE_NAME}}</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="http://www.littlesparkvt.com/flatstrap/assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="/css/unique.css">
 </head>
 <body>
   <div class="container">
+    {{#if user}}<a href="/logout" class="btn">Logout</a>{{else}}<a href="/login" class="btn">Sign In</a>{{/if}}
     {{{body}}}
   </div>
 </body>
