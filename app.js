@@ -78,6 +78,7 @@ app.get('/user.json', function(req, res, next) {
   res.send(req.user);
 });
 
+app.get('/login', routes.login);
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');

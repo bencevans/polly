@@ -1,6 +1,8 @@
 
+var db = require('../db');
+
 module.exports = function(req, res, next) {
-  if(req.user)
-    return res.send(req.user);
-  res.render('index');
+  db.Poll.findAll().success(function(polls) {
+    res.render('index', { polls: polls });
+  }).error(next);
 };

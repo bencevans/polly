@@ -1,16 +1,15 @@
+<h1>RYC: Romsey Youth Votes</h1>
 
-<div class="ycontainer">
-  <a class="button button-facebook" href="/auth/facebook">Login with Facebook</a>
-  <a class="button button-twitter" href="/auth/twitter">Login with Twitter</a>
-</div>
+<p>Welcome to <a href="http://ryc.org.uk">Romsey Youth Council</a>'s voting system. Here we ask the youth of Romsey for their opionions on current topics to provide insight into what Romsey should be doing for young people.</p>
 
-<script type="text/javascript">
-var y = document.querySelector('.ycontainer');
+<p>A Facebook or Twitter account is required to vote, this is to limit 1 vote per person per question.</p>
 
-function positionY() {
-  y.style.marginTop = (window.innerHeight - y.offsetHeight) / 3 + 'px';
-}
+<h2>Current Questions:</h2>
 
-window.addEventListener('load', positionY, false)
-window.onresize = positionY;
-</script>
+<ul>
+
+{{#polls}}
+<li><a href="/poll/{{id}}">{{name}}</a></li>
+{{/polls}}
+
+</ul>
