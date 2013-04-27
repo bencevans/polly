@@ -31,9 +31,3 @@ body {
   font-size: 30px;
   width: 300px;
 }
-
-.container {
-  width:60%;
-  max-width: 1080px;
-  min-width: 400px;
-}

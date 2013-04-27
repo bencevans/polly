@@ -8,8 +8,36 @@
   <link rel="stylesheet" type="text/css" href="/css/unique.css">
 </head>
 <body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">{{SITE_NAME}}</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+
+          </ul>
+          <ul class="nav pull-right">
+            {{#if user}}
+            <li><a href="/logout">Logout</a></li>
+            {{#if user.admin}}
+            <li><a href="/admin">Admin</a></li>
+            {{/if}}
+            {{else}}
+            <li><a href="/login">Login/Register</a></li>
+            {{/if}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
   <div class="container">
-    {{#if user}}<a href="/logout" class="btn">Logout</a>{{else}}<a href="/login" class="btn">Sign In</a>{{/if}}
     {{{body}}}
   </div>
 </body>
