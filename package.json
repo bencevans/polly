@@ -15,9 +15,12 @@
     "passport-facebook": "~0.1.5",
     "express": "~3.2.0",
     "hbs": "~2.1.0",
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "require-dir": "~0.1.0",
+    "sequelize": "~1.6.0"
   },
   "devDependencies": {
-    "supervisor": "~0.5.2"
+    "supervisor": "~0.5.2",
+    "sqlite3": "~2.1.7"
   }
 }
