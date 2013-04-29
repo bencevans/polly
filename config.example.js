@@ -22,10 +22,10 @@ module.exports = {
   TWITTER_CONSUMER_SECRET: 'abcdefghijklmnopqrstuv0987654321',
   TWITTER_CALLBACK_URL: 'http://localhost:3000/auth/twitter/callback',
 
-    /**
+  /**
    * Global View Locals
    */
 
-  LOCALS_SITE_NAME: 'Romsey Youth Votes'
+  LOCALS_SITE_NAME: 'Polly'
 
 };
