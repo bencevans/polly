@@ -26,7 +26,8 @@ module.exports = new TwitterStrategy({
 
     // Else Create User
     db.User.build({
-      twitterId: profile.id
+      twitterId: profile.id,
+      name: profile.displayName
     }).save().success(function(user) {
       done(null, user);
     }).error(done);
