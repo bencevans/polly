@@ -4,7 +4,8 @@
  */
 
 var Sequelize = module.exports.Sequelize = require("sequelize"),
-  requireDir = require('require-dir');
+  requireDir = require('require-dir'),
+  debug = require('debug')('sql');
 
 /**
  * Helpers
@@ -22,10 +23,13 @@ var options;
 if (process.env.SQLITE || require('./config').SQLITE) {
   options = {
     dialect: "sqlite",
-    storage: "./db.sqlite"
+    storage: "./db.sqlite",
+    logging: debug
   };
 } else {
-  options = {};
+  options = {
+    logging: debug
+  };
 }
 
 var sequelize = module.exports.sequelize = new Sequelize('vote', 'root', 'sqlpass', options);
