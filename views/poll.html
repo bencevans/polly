@@ -1,12 +1,28 @@
 <h2>{{name}}</h2>
 <p>{{description}}</p>
 
+
 <form>
-  <input name="response" type="radio" value="yes"> Yes
-  <input name="response" type="radio" value="no"> No
-  <input name="response" type="radio" value="unsure"> Unsure
-
-  Comments <textarea name="comment"></textarea>
-
-  <input type="submit">
+  <fieldset>
+    <span class="help-block">What's your opinion?</span>
+    <label class="radio">
+      <input type="radio" name="response" id="response1" value="for">
+      For
+    </label>
+    <label class="radio">
+      <input type="radio" name="response" id="response2" value="against">
+      Against
+    </label>
+    <label class="radio">
+      <input type="radio" name="response" id="response3" value="unsure">
+      Unsure
+    </label>
+    <div class="control-group">
+      <label class="control-label" for="comment">Comment</label>
+      <div class="controls">
+        <textarea name="comment" id="comment"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
 </form>
