@@ -89,7 +89,7 @@ app.get('*', function(req, res, next) {
 
 app.get('/', routes.index);
 app.get('/poll/:id', routes.poll);
-
+app.get('/poll/:id/simple', routes.poll.simple);
 app.get('/admin', isAdmin, function(req, res) {
   res.redirect('/admin/poll');
 });
