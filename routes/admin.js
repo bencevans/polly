@@ -1,6 +1,14 @@
 
 var db = require('../db');
 
+module.exports.user = {};
+
+module.exports.user.list = function(req, res, next) {
+  db.User.findAll().success(function(users) {
+    res.render('admin/user/list', {users:users});
+  });
+};
+
 module.exports.poll = {};
 
 module.exports.poll.list = function(req, res, next) {

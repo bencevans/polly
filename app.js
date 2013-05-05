@@ -87,6 +87,7 @@ app.get('/poll/:id', routes.poll);
 app.get('/admin', isAdmin, function(req, res) {
   res.redirect('/admin/poll');
 });
+app.get('/admin/user', isAdmin, routes.admin.user.list);
 app.get('/admin/poll', isAdmin, routes.admin.poll.list);
 app.get('/admin/poll/new', isAdmin, routes.admin.poll.form);
 app.get('/admin/poll/:id', isAdmin, routes.admin.poll.form);
