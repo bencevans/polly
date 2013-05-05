@@ -27,7 +27,7 @@ module.exports = new FacebookStrategy({
     // Else Create User
     db.User.build({
       facebookId: profile.id,
-      name: profile.name
+      name: profile.name.givenName + ' ' + profile.name.familyName
     }).save().success(function(user) {
       done(null, user);
     }).error(done);
