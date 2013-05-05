@@ -26,6 +26,12 @@ module.exports = {
    * Global View Locals
    */
 
-  LOCALS_SITE_NAME: 'Polly'
+  LOCALS_SITE_NAME: 'Polly',
+
+  /**
+   * Express Config
+   */
+
+  EXPRESS_SESSION_SECRET: 'keyboard cat'
 
 };

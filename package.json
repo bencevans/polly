@@ -18,7 +18,8 @@
     "underscore": "~1.4.4",
     "require-dir": "~0.1.0",
     "sequelize": "~1.6.0",
-    "debug": "~0.7.2"
+    "debug": "~0.7.2",
+    "connect-redis": "~1.4.5"
   },
   "devDependencies": {
     "supervisor": "~0.5.2",

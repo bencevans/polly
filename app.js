@@ -10,6 +10,11 @@ var express = require('express'),
     hbs = require('hbs'),
     db = require('./db');
 
+if(process.env.REDISTOGO_URL)
+  var redisStore = require('connect-heroku-redis')(express);
+else
+  var redisStore = require('connect-redis')(express);
+
 /**
  * Express Config
  */
@@ -34,7 +39,10 @@ app.configure(function() {
   app.set('view engine', 'html');
   app.use(express.cookieParser());
   app.use(express.bodyParser());
-  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(express.session({
+    secret: require('./config').EXPRESS_SESSION_SECRET,
+    store: new redisStore()
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
