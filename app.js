@@ -8,12 +8,10 @@ var express = require('express'),
     passport = require('passport'),
     requireDir = require('require-dir'),
     hbs = require('hbs'),
-    db = require('./db');
-
-if(process.env.REDISTOGO_URL)
-  var redisStore = require('connect-heroku-redis')(express);
-else
-  var redisStore = require('connect-redis')(express);
+    db = require('./db'),
+    redisStore = require((process.env.REDISTOGO_URL) ?
+      'connect-heroku-redis' : 'connect-redis'
+      )(express);
 
 /**
  * Express Config
