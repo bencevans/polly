@@ -22,7 +22,7 @@ module.exports = function(data) {
     '    </tr>',
     '  </thead>',
     '  <tbody>',
-    '    <tr><td>' + dataValues(data).join('</td><td>') + '</td></tr>',
+    '    <tr><td>' + dataValues(data).join('</td></tr><tr><td>') + '</td></tr>',
     '  </tbody>',
     '</table>'
   ].join('');
