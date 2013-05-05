@@ -15,7 +15,7 @@ module.exports = function(data) {
   if(data[0]) keys = Object.keys(data[0].values || data[0]);
 
   return [
-    '<table class="table table-bordered table-striped">',
+    '<table class="table table-bordered table-striped table-hover">',
     '  <thead>',
     '    <tr>',
     '      <th>' + keys.join('</th><th>') + '</th>',
