@@ -69,11 +69,9 @@ passport.deserializeUser(function(id, done) {
   }).error(done);
 });
 
-
 /**
  * Routes
  */
-
 
 var routes = requireDir(__dirname + '/routes');
 
@@ -91,9 +89,7 @@ app.get('/', routes.index);
 app.get('/poll/:id', routes.poll);
 app.get('/poll/:id/simple', routes.poll.simple);
 app.get('/poll/:id.js', routes.poll.js);
-app.get('/admin', isAdmin, function(req, res) {
-  res.redirect('/admin/poll');
-});
+app.get('/admin', isAdmin, routes.admin);
 app.get('/admin/user', isAdmin, routes.admin.user.list);
 app.get('/admin/poll', isAdmin, routes.admin.poll.list);
 app.get('/admin/poll/new', isAdmin, routes.admin.poll.form);
@@ -101,16 +97,9 @@ app.get('/admin/poll/:id', isAdmin, routes.admin.poll.form);
 app.post('/admin/poll/new', isAdmin, routes.admin.poll.formAction);
 app.post('/admin/poll/:id', isAdmin, routes.admin.poll.formAction);
 app.get('/admin/poll/:id/destroy', isAdmin, routes.admin.poll.destroy);
-
-app.get('/user.json', function(req, res, next) {
-  res.send(req.user);
-});
-
-app.get('/login', routes.login);
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
+app.get('/user.json', routes.auth.user);
+app.get('/login', routes.auth.login);
+app.get('/logout', routes.auth.logout);
 
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:'publish_actions'}));

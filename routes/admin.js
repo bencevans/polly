@@ -1,8 +1,22 @@
 
+/**
+ * Dependencies
+ */
+
 var db = require('../db');
+
+/**
+ * GET /admin
+ */
+module.exports = function(req, res, next) {
+  res.redirect('/admin/poll');
+};
 
 module.exports.user = {};
 
+/**
+ * GET /admin/user
+ */
 module.exports.user.list = function(req, res, next) {
   db.User.findAll().success(function(users) {
     res.render('admin/user/list', {users:users});
@@ -11,12 +25,18 @@ module.exports.user.list = function(req, res, next) {
 
 module.exports.poll = {};
 
+/**
+ * GET /admin/poll
+ */
 module.exports.poll.list = function(req, res, next) {
   db.Poll.findAll().success(function(polls) {
     res.render('admin/poll/list', {polls:polls});
   });
 };
 
+/**
+ * GET /admin/poll/:id/destroy
+ */
 module.exports.poll.destroy = function(req, res, next) {
   db.Poll.find({
     where: {
@@ -30,6 +50,10 @@ module.exports.poll.destroy = function(req, res, next) {
   });
 };
 
+/**
+ * GET /admin/poll/:id
+ * GET /admin/poll/new
+ */
 module.exports.poll.form = function(req, res, next) {
 
   // If new
@@ -46,6 +70,9 @@ module.exports.poll.form = function(req, res, next) {
   });
 };
 
+/**
+ * POST /admin/poll/:id
+ */
 module.exports.poll.formAction = function(req, res, next) {
 
   for(var i in req.body) {

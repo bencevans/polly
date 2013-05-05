@@ -35,3 +35,7 @@ module.exports = {
   EXPRESS_SESSION_SECRET: 'keyboard cat'
 
 };
+
+for (var i = module.exports.length - 1; i >= 0; i--) {
+  module.exports[i] = process.env[i] || module.exports[i];
+}

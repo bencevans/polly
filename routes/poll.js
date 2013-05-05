@@ -11,7 +11,7 @@ var db = require('../db'),
  */
 
 function addslashes( str ) {
-    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+  return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
 }
 
 function pollById (id, cb) {
