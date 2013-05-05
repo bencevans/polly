@@ -10,7 +10,6 @@ module.exports.poll.list = function(req, res, next) {
 };
 
 module.exports.poll.destroy = function(req, res, next) {
-  console.log('s');
   db.Poll.find({
     where: {
       id: req.params.id

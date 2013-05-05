@@ -2,7 +2,6 @@
 var _ = require('underscore');
 
 function dataValues (data) {
-  console.log(data[0].values);
   return _.map(data, function(item) {
     return _.toArray((item.values || item)).join('</td><td>');
   });
