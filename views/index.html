@@ -1,15 +1,41 @@
-<h1>RYC: Romsey Youth Votes</h1>
+<h1>{{SITE_NAME}}</h1>
 
-<p>Welcome to <a href="http://ryc.org.uk">Romsey Youth Council</a>'s voting system. Here we ask the youth of Romsey for their opinions on current topics to provide insight into what Romsey should be doing for young people.</p>
+<p>Welcome to the <a href="/">{{SITE_NAME}}</a> poll/voting platform.</p>
 
-<p>A Facebook or Twitter account is required to vote, this is to limit 1 vote per person per question.</p>
+<div class="well">
 
-<h2>Current Questions:</h2>
+<h3>Setup</h3>
 
+<p>If you are seeing this message you have already setup your config file and installed dependencies. The next step is to customise your welcome page (this page), setup your account/admin privleges and add some questions for your users to vote on.</p>
+
+<ol>
+
+  <li>
+    <h4>User Account &amp; Admin Privledges</h4>
+    <p>Click Login/Register in the top right then login/register using your prefered method.</p>
+    <p>Visit <a href="/user.json">/user.json</a>, taking note of the <code>id</code>. Then in terminal run <code>./scripts/make-admin &lt;user id&gt;</code></p>
+  </li>
+  <li>
+    <h4>Add Polls</h4>
+    <p>Now you have admin permissions, you should be able to visit <a href="/admin/poll/new">/admin/poll/new</a> and be displayed with a new poll form.</p>
+  </li>
+  <li>
+    <h4>Edit Welcome Page</h4>
+    <p>Open <code>/views/index.html</code> in a text editor where you'll find the HTML for this page, update this to what you would like your visitors to see.</p>
+  </li>
+</ol>
+
+</div>
+
+<h2>Current Polls:</h2>
+
+
+{{#if polls}}
 <ul>
-
-{{#polls}}
-<li><a href="/poll/{{id}}">{{name}}</a></li>
-{{/polls}}
-
+  {{#polls}}
+  <li><a href="/poll/{{id}}">{{name}}</a></li>
+  {{/polls}}
 </ul>
+{{else}}
+<p>There are currently no polls available.</p>
+{{/if}}
