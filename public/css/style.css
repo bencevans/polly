@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+table {
+  background-color: #fff;
+}
+
 .button {
   padding: 30px;
   display: block;
