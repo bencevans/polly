@@ -19,7 +19,8 @@
     "require-dir": "~0.1.0",
     "sequelize": "~1.6.0",
     "debug": "~0.7.2",
-    "connect-redis": "~1.4.5"
+    "connect-redis": "~1.4.5",
+    "connect-heroku-redis": "~0.1.5"
   },
   "devDependencies": {
     "supervisor": "~0.5.2",
