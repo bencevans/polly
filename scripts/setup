@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+process.env.DEBUG = process.env.DEBUG || 'sql';
+
 var db = require('../db');
 
 var syncOptions = {
