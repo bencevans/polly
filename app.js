@@ -65,7 +65,8 @@ passport.deserializeUser(function(id, done) {
   db.User.find({
     where: {
       id: id
-    }
+    },
+    attributes: ['id', 'name', 'facebookId', 'twitterId', 'username']
   }).success(function(user) {
     done(null, user);
   }).error(done);

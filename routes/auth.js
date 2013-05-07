@@ -44,7 +44,7 @@ module.exports.registerAction = function(req, res, next) {
   bcrypt.hash(req.body.password, 10, function(err, hash) {
     if(err) return next(err);
     var user = db.User.build({
-      displayName: req.body.username,
+      name: req.body.username,
       username: req.body.username,
       passwordHash: hash
     }).save().success(function(user) {
