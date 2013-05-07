@@ -27,6 +27,7 @@ module.exports.logout = function(req, res, next) {
  * GET /user.json
  */
 module.exports.user = function(req, res, next) {
+  if(!req.user) return next();
   res.send(req.user);
 };
 
