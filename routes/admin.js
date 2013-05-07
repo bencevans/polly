@@ -3,7 +3,8 @@
  * Dependencies
  */
 
-var db = require('../db');
+var db = require('../db'),
+    _ = require('underscore');
 
 /**
  * GET /admin
@@ -30,6 +31,10 @@ module.exports.poll = {};
  */
 module.exports.poll.list = function(req, res, next) {
   db.Poll.findAll().success(function(polls) {
+    polls = _.map(polls, function(poll) {
+      poll.id = '<a href="/admin/poll/' + poll.id + '">' + poll.id + '</a>';
+      return poll;
+    });
     res.render('admin/poll/list', {polls:polls});
   });
 };
