@@ -2,6 +2,21 @@
 <div class="ycontainer">
   <a class="button button-facebook" href="/auth/facebook">Login with Facebook</a>
   <a class="button button-twitter" href="/auth/twitter">Login with Twitter</a>
+
+  <form action="/login" method="post">
+    <div>
+      <label>Username:</label>
+      <input type="text" name="username"/>
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" name="password"/>
+    </div>
+    <div>
+      <input type="submit" value="Log In"/>
+    </div>
+  </form>
+
 </div>
 
 <script type="text/javascript">

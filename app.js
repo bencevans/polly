@@ -9,6 +9,7 @@ var express = require('express'),
     requireDir = require('require-dir'),
     hbs = require('hbs'),
     db = require('./db'),
+    flashify = require('flashify'),
     redisStore = require((process.env.REDISTOGO_URL) ?
       'connect-heroku-redis' : 'connect-redis'
       )(express);
@@ -43,6 +44,7 @@ app.configure(function() {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(flashify);
   app.use(app.router);
 });
 
@@ -100,7 +102,14 @@ app.get('/admin/poll/:id/destroy', isAdmin, routes.admin.poll.destroy);
 app.get('/user.json', routes.auth.user);
 app.get('/login', routes.auth.login);
 app.get('/logout', routes.auth.logout);
+app.get('/register', routes.auth.register);
+app.post('/register', routes.auth.registerAction);
 
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}));
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope:'publish_actions'}));
 app.get('/auth/facebook/callback',

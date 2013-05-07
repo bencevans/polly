@@ -1,5 +1,12 @@
 
 /**
+ * Dependencies
+ */
+
+var bcrypt = require('bcrypt'),
+    db = require('../db');
+
+/**
  * GET /login
  */
 module.exports.login = function(req, res, next) {
@@ -21,4 +28,27 @@ module.exports.logout = function(req, res, next) {
  */
 module.exports.user = function(req, res, next) {
   res.send(req.user);
+};
+
+/**
+ * GET /register
+ */
+module.exports.register = function(req, res, next) {
+  res.render('register');
+};
+
+/**
+ * POST /register
+ */
+module.exports.registerAction = function(req, res, next) {
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
+    if(err) return next(err);
+    var user = db.User.build({
+      displayName: req.body.username,
+      username: req.body.username,
+      passwordHash: hash
+    }).save().success(function(user) {
+      res.redirect('/login');
+    }).error(next);
+  });
 };

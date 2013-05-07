@@ -16,11 +16,16 @@ module.exports = function(sequelize, Sequelize) {
       allowNull: true,
       unique: true
     },
+    username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
     admin: {
       type: Sequelize.BOOLEAN,
       default: false
     },
-    name:{
+    passwordHash:{
       type: Sequelize.STRING,
       allowNull: true
     }

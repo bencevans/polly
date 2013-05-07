@@ -20,7 +20,9 @@
     "sequelize": "~1.6.0",
     "debug": "~0.7.2",
     "connect-redis": "~1.4.5",
-    "connect-heroku-redis": "~0.1.5"
+    "connect-heroku-redis": "~0.1.5",
+    "bcrypt": "~0.7.5",
+    "flashify": "~0.1.2"
   },
   "devDependencies": {
     "supervisor": "~0.5.2",
