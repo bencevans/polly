@@ -4,7 +4,13 @@ module.exports = {
    * Database
    */
 
-  SQLITE: true,
+  SQL_TYPE: 'sqlite', // 'mysql' (requires mysql module)
+
+  SQL_DATABASE: null,
+  SQL_USERNAME: null,
+  SQL_PASSWORD: null,
+
+  SQL_SQLITE_PATH: './db.sqlite',
 
   /**
    * Facebook Auth
@@ -35,7 +41,3 @@ module.exports = {
   EXPRESS_SESSION_SECRET: 'keyboard cat'
 
 };
-
-for (var i = module.exports.length - 1; i >= 0; i--) {
-  module.exports[i] = process.env[i] || module.exports[i];
-}

@@ -5,7 +5,8 @@
 
 var Sequelize = module.exports.Sequelize = require("sequelize"),
   requireDir = require('require-dir'),
-  debug = require('debug')('sql');
+  debug = require('debug')('sql'),
+  config = require('./config');
 
 /**
  * Helpers
@@ -20,10 +21,10 @@ function capitaliseFirstLetter(string) {
  */
 
 var options;
-if (process.env.SQLITE || require('./config').SQLITE) {
+if (config.SQL_TYPE == 'sqlite') {
   options = {
-    dialect: "sqlite",
-    storage: "./db.sqlite",
+    dialect: 'sqlite',
+    storage: config.SQL_SQLITE_PATH,
     logging: debug
   };
 } else {
@@ -32,7 +33,7 @@ if (process.env.SQLITE || require('./config').SQLITE) {
   };
 }
 
-var sequelize = module.exports.sequelize = new Sequelize('vote', 'root', 'sqlpass', options);
+var sequelize = module.exports.sequelize = new Sequelize(config.SQL_DATABASE, config.SQL_USERNAME, config.SQL_PASSWORD, options);
 
 /**
  * Load Models
