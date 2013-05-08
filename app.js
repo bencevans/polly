@@ -36,6 +36,7 @@ app.configure(function() {
   app.set('views', __dirname + '/views');
   app.engine('html', hbs.__express);
   app.set('view engine', 'html');
+  app.use(express.favicon());
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.session({
