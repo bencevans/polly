@@ -52,3 +52,5 @@ for(var model in modelFiles) {
  * Relationships
  */
 
+models.Poll.hasMany(models.Vote);
+models.Vote.belongsTo(models.Poll);

@@ -90,6 +90,7 @@ app.get('*', function(req, res, next) {
 
 app.get('/', routes.index);
 app.get('/poll/:id', routes.poll);
+app.post('/poll/:id', routes.poll.vote);
 app.get('/poll/:id/simple', routes.poll.simple);
 app.get('/poll/:id.js', routes.poll.js);
 app.get('/admin', isAdmin, routes.admin);

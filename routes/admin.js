@@ -19,10 +19,13 @@ module.exports.user = {};
  * GET /admin/user
  */
 module.exports.user.list = function(req, res, next) {
-  db.User.findAll().success(function(users) {
+  db.User.findAll({
+    attributes: ['id', 'facebookId', 'twitterId', 'name', 'username', 'admin', 'createdAt', 'updatedAt']
+  }).success(function(users) {
     users = _.map(users, function(user) {
       user.twitterId = (user.twitterId) ? '<a href="https://twitter.com/intent/user?user_id=' + user.twitterId + '">' + user.twitterId + '</a>' : null;
       user.facebookId = (user.facebookId) ? '<a href="https://facebook.com/' + user.facebookId + '">' + user.facebookId + '</a>' : null;
+      user.passwordHash = '<i>*hidden*</i>';
       return user;
     });
     res.render('admin/user/list', {users:users});

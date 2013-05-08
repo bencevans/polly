@@ -2,19 +2,19 @@
 <p>{{description}}</p>
 
 
-<form>
+<form method="POST" action="/poll/{{id}}">
   <fieldset>
     <span class="help-block">What's your opinion?</span>
     <label class="radio">
-      <input type="radio" name="response" id="response1" value="for">
+      <input type="radio" name="response" id="response1" value="1">
       For
     </label>
     <label class="radio">
-      <input type="radio" name="response" id="response2" value="against">
+      <input type="radio" name="response" id="response2" value="0">
       Against
     </label>
     <label class="radio">
-      <input type="radio" name="response" id="response3" value="unsure">
+      <input type="radio" name="response" id="response3" value="2">
       Unsure
     </label>
     <div class="control-group">
