@@ -66,7 +66,7 @@ passport.deserializeUser(function(id, done) {
     where: {
       id: id
     },
-    attributes: ['id', 'name', 'facebookId', 'twitterId', 'username']
+    attributes: ['id', 'name', 'facebookId', 'twitterId', 'username', 'admin']
   }).success(function(user) {
     done(null, user);
   }).error(done);
